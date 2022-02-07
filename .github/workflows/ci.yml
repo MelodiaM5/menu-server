@@ -19,20 +19,19 @@ jobs:
       with:
         name: menu-server.jar
         path: target/menu-server.jar  
-jobs:
   release-heroku:
-    steps:
-    - uses: actions/upload-artifact@v2
-      with:
-        name: menu-server.jar
-        path: target/menu-server.jar
-    - uses: actions/checkout@v2
-    - shell: bash
-      env:
-        HEROKU_API_KEY : ${{secrets.HEROKU_API_KEY}}
-    - run: |
-        heroku login
-        heroku container:release web --app menu-server-herman-mohad
+      steps:
+      - uses: actions/upload-artifact@v2
+        with:
+          name: menu-server.jar
+          path: target/menu-server.jar
+      - uses: actions/checkout@v2
+      - shell: bash
+        env:
+          HEROKU_API_KEY : ${{secrets.HEROKU_API_KEY}}
+      - run: |
+          heroku login
+          heroku container:release web --app menu-server-herman-mohad
 
 
 
